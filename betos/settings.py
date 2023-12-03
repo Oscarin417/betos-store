@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-p7s@yq)o6ovut-@m^v0h^knfgcs)cwop6xv_55_zbfl^!7es+c"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,12 +84,8 @@ WSGI_APPLICATION = "betos.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER': 'root',
-        'PASSWORD': 'bC5HD16fAbGDF6F6GcfA1a2d13FhE6hb',
-        'HOST': 'monorail.proxy.rlwy.net',
-        'PORT': '39670',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
