@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block header %}
+    <h1>Editar Usuario</h1>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        {{error}}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <button class='btn btn-success'>
+				<i class="fas fa-check"></i>
+			</button>
+			<a href="/usuarios" class="btn btn-danger">
+                <i class="fas fa-times"></i>
+            </a>
+        </form>
+    </div>
+{% endblock %}

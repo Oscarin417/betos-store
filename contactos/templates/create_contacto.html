@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block header %}
+    <h1>Crear Contacto</h1>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        {{error}}
+
+        <form action="/contactos/create/" method='POST'>
+            {% csrf_token %}
+            {{form.as_p}}        
+            <button class='btn btn-success'>
+                <i class="fas fa-check"></i>
+            </button>
+            <a href="/contacto" class="btn btn-danger">
+                <i class="fas fa-times"></i>
+            </a>
+        </form>
+    </div>
+{% endblock %}

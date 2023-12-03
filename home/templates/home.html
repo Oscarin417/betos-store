@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block header %}
+    <h1>Home</h1>
+{% endblock %}
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{productos}}</h3>
+                            <p>Productos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-social-usd"></i>
+                        </div>
+                        <a href="/productos" class="small-box-footer">Ver mas</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{contactos}}</h3>
+                            <p>Contactos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-android-contact"></i>
+                        </div>
+                        <a href="/contactos" class="small-box-footer">Ver mas</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{usuarios}}</h3>
+                            <p>Usuarios</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person"></i>
+                        </div>
+                        <a href="/usuarios" class="small-box-footer">Ver mas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

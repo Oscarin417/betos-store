@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block header %}
+	<h1>Usuarios</h1>
+{% endblock %}
+{% block content %}
+	<a href="/usuarios/create" class="btn btn-primary">
+		<i class="fa fa-plus"></i>
+	</a>
+
+	<table class="table table-dark table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Usuario</th>
+				<th>Nombre(s)</th>
+				<th>Apellidos</th>
+				<th>Correo</th>
+				<th>Password</th>
+				<th>Imagen</th>
+                <th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for u in usuarios %}
+				<tr>
+					<td>{{u.id}}</td>
+					<td>{{u.username}}</td>
+					<td>{{u.first_name}}</td>
+					<td>{{u.last_name}}</td>
+					<td>{{u.email}}</td>
+                    <td>{{u.password}}</td>
+					<td>
+						<img src="{{u.imagen.url}}" alt="{{u.nombre}}" width="50px;">
+					</td>
+					<td>
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<a href="/usuarios/edit/{{u.id}}" class="btn btn-warning">
+								<i class="fas fa-pencil-alt"></i>
+							</a>
+							<form action="{% url 'delete_usuario' u.id %}" method="POST">
+								{% csrf_token %}
+								<button class="btn btn-danger">
+									<i class="fa fa-trash"></i>
+								</button>
+							</form>
+						</div>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                {% if contactos.has_previous %}
+                    <a class="page-link" href="?page={{ usuarios.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                {% endif %}
+            </li>
+            <li class="page-item">
+                <a href="?page={{ usuarios.number }}" class="page-link">{{ usuarios.number }}</a>
+            </li>
+            <li class="page-item">
+                {% if contactos.has_next %}
+                    <a class="page-link" href="?page={{ usuarios.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+{% endblock %}

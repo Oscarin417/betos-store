@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BETO'S</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="{% static "lib/adminlte/plugins/fontawesome-free/css/all.min.css" %}">
+    <link rel="stylesheet" href="{% static "lib/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css" %}">
+    <link rel="stylesheet" href="{% static "lib/adminlte/css/adminlte.min.css" %}">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<!-- Site wrapper -->
+<div class="wrapper">
+  <!-- Navbar -->
+  {% include "navbar.html" %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <img src="{% static "images/betosLogo.jpg" %}" alt="BETO'S Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">BETO'S</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+
+      <!-- Sidebar Menu -->
+      {% include "sidebar.html" %}
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <!-- Default box -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  {% block header %}
+                  {% endblock %}
+                </h3>
+              </div>
+              <div class="card-body">
+                {% block content %}
+                {% endblock %}
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <strong>BETO'S &#174; {% now "Y" %}</strong>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+    <script src="{% static "lib/adminlte/plugins/jquery/jquery.min.js" %}"></script>
+    <script src="{% static "lib/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+    <script src="{% static "lib/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js" %}"></script>
+    <script src="{% static "lib/adminlte/js/adminlte.min.js" %}"></script>
+</body>
+</html>

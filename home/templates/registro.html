@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block header %}
+    <h1 class="text-center">Registro</h1>
+{% endblock %}
+{% block content %} 
+    <main class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 mt-5">
+                <form action="/registro/" method="POST" class="card card-body">
+                    {{error}}
+                    {% csrf_token %}
+                    <div class="form-floating mb3">
+                        <label for="username">User Name</label>
+                        <input id="floatingInput" type="text" name="username" class="form-control" placeholder="UserName">
+                    </div>
+                    <div class="form-floating mb3">
+                        <label for="password1">Password</label>
+                        <input id="floatingPassword" type="password" name="password1" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-floating mb3">
+                        <label for="password2">Repetir Password</label>
+                        <input id="floatingPassword" type="password" name="password2" class="form-control" placeholder="Password">
+                    </div>
+                    <button class="btn btn-success">Registrarse</button>
+                    <a href="/login">
+                        Iniciar Sesion
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}

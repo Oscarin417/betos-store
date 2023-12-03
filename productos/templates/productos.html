@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block header %}
+    <h1>Productos</h1>
+{% endblock %}
+{% block content %}
+    <a href="/productos/create" class="btn btn-primary">
+        <i class="fa fa-plus"></i>
+    </a>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in productos %}
+                <tr>
+                    <td>{{p.id}}</td>
+                    <td>{{p.nombre}}</td>
+                    <td>${{p.precio}}</td>
+                    <td>{{p.descripcion}}</td>
+                    <td>
+                        <img src="{{p.imagen.url}}" alt="{{p.nombre}}" width="50px;">
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="/productos/edit/{{p.id}}" class='btn btn-warning'>
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <form action="{% url "delete_productos" p.id %}" method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-danger">
+									<i class="fa fa-trash"></i>
+								</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                {% if productos.has_previous %}
+                    <a class="page-link" href="?page={{ productos.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                {% endif %}
+            </li>
+            <li class="page-item">
+                <a href="?page={{ productos.number }}" class="page-link">{{ productos.number }}</a>
+            </li>
+            <li class="page-item">
+                {% if productos.has_next %}
+                    <a class="page-link" href="?page={{ productos.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+{% endblock %}
