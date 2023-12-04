@@ -1,4 +1,4 @@
 env
 __pycache__
 frontend
-db.sqllite3
+db.sqlite3
